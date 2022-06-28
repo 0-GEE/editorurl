@@ -76,16 +76,30 @@ namespace EditorURL
 
         private static string formatCombo(Dictionary<HitObject, int> hitObjects)
         {
-            // to be implemented
+            var retVal = "";
 
-            return "";
+            foreach (var pair in hitObjects) {
+                retVal += pair.Value.ToString();
+                
+                if (!Equals(pair, hitObjects.Last()))
+                {
+                    retVal += ",";
+
+                }
+            }
+
+            return retVal;
         }
 
         private static string generateHTML(string ext)
         {
             // to be implemented
 
-            return "";
+            var retVal = "<!DOCTYPE html>\n";
+
+            retVal += $"<script>location.replace(\"{ext}\");</script>";
+
+            return retVal;
         }
 
         private static string commitAndPush(string fileName)
